@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app_new/model/news_model.dart';
 import 'package:news_app_new/network/news_network.dart';
+import 'package:news_app_new/screen/news_detail.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,17 +24,17 @@ class _HomePageState extends State<HomePage> {
             return ListView(
               children: _news
                   .map(
-                    (News _var) => ListTile(
-                      leading: Text("${_var.publisher}"),
-                      title: Text(_var.title),
-                      subtitle: Text("${_var.id}"),
-                      // onTap: () => Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => PostDetail(
-                      //       post: post,
-                      //     ),
-                      //   ),
-                      // ),
+                    (News _varNews) => ListTile(
+                      leading: Text("${_varNews.publisher}"),
+                      title: Text(_varNews.title),
+                      subtitle: Text("${_varNews.id}"),
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => NewsDetails(
+                            news: _varNews,
+                          ),
+                        ),
+                      ),
                     ),
                   )
                   .toList(),
