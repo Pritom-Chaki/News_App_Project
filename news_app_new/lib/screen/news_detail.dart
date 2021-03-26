@@ -7,13 +7,59 @@ class NewsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(news.title),
-      ),
-      body: Container(
-        height: 50.0,
-        color: Colors.red,
-      ),
-    );
+        appBar: AppBar(
+          title: Text(news.title),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            color: Colors.red,
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.white38,
+                  height: 120,
+                  width: double.infinity,
+                  child: Image.network(
+                    news.image,
+                    width: double.infinity,
+                    height: 120,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Text(
+                  news.title,
+                  maxLines: 3,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      news.date.substring(0, 10),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      news.author,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
