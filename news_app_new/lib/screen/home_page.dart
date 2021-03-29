@@ -14,7 +14,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HTTP"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "Flutter",
+              style:
+                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w700),
+            ),
+            Text(
+              "News",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+            )
+          ],
+        ),
+        backgroundColor: Colors.blue,
+        // elevation: 0.0,
       ),
       body: FutureBuilder(
         future: newsNetwork.getNews(),
@@ -48,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Text(
                               _varNews.title,
-                              maxLines: 3,
+                              //  maxLines: 4,
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -56,23 +72,6 @@ class _HomePageState extends State<HomePage> {
                             ),
                             SizedBox(
                               height: 5,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              //crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  _varNews.date.substring(0, 10),
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  _varNews.author,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
                             ),
                             SizedBox(
                               height: 5,
